@@ -1,0 +1,27 @@
+---
+classes: 
+   - mysql
+   - mysql::server
+   - sensu
+   - sensu::client
+   - sensu::client::mysql
+   - sensu::client::metrics
+   - logstash::client
+
+
+mysql::mysql_root_password:       "fred"
+#mysql::mysql_old_root_password: "fred123"
+mysql::mysql_distro:              "percona"
+mysql::mysql_version:             "5.6"
+mysql::mysql_serverid:            "2"
+mysql::mysql_bind_interface:      "eth1"
+mysql::galera_version:           "3"
+#mysql::bootstrap:               True
+mysql::ensure:                    "running"
+sensu::interval:                  "5"
+sensu::client::mysql::username:   "root"
+sensu::client::mysql::password:   "fred"
+sensu::client::redis_host:        "192.168.90.2"
+sensu::client::rabbitmq_host:     "192.168.90.2"
+sensu::client::rabbitmq_password: "fred"
+logstash::client::server:         "192.168.90.2"
